@@ -4,9 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node /server/server.js",
+
+******* adding as start script is how I tell my service (heroku in this case) which script to run on startup *****
+    "start": "node server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+******* "engines" is how I tell heroku which version of nodejs I want to use ********
   "engines": {
     "node": "9.11.1"
   },

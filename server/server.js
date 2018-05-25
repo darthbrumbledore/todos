@@ -8,6 +8,9 @@ var {User} = require('./models/user');
 
 var app = express();
 
+// set port to the env variable from Heroku, or 3000...whichever is available in our env
+const port = process.env.PORT || 3000;
+
 // configure middleware...body-parser in this case
 
 app.use(bodyParser.json());
@@ -17,9 +20,6 @@ app.post('/todos', (req, res) => {
   var todo = new Todo({
     text: req.body.text
   });
-
-
-
   todo.save().then((doc) => {
     res.send(doc);
   }, (e) => {
@@ -55,6 +55,6 @@ app.get('/todos', (req, res) => {
 });
 
 // Server listener
-app.listen(3000, () => {
-  console.log('Started on port 3000');
+app.listen(port, () => {
+  console.log(`Starting server on port ${port}`);
 });
