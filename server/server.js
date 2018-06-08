@@ -130,6 +130,19 @@ app.get('/users/me', authenticate, (req, res) => {
   res.send(req.user);
 });
 
+// post route for logging users in /users/login {email, password}
+
+app.post('/users/login', (req, res) => {
+  var body = _.pick(req.body, ['email', 'password']);
+  // res.send(body);
+
+  User.findByCredentials(body.email, body.password).then((user) => {
+
+  }).catch((e) => {
+    
+  })
+
+});
 
 // Server listener
 app.listen(port, () => {
